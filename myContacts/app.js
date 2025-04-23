@@ -7,6 +7,11 @@ app.get("/", (req, res) => {
 });
 
 // 미들웨어 등록
+// 바디파서 미들웨어
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// 라우트 미들웨어
 app.use("/concats", require("./routes/concatRoutes"));
 
 // app 서버 실행

@@ -7,6 +7,13 @@ router
     res.send("concats Page");
   })
   .post((req, res) => {
+    console.log(req.body);
+    const { name, email, phone } = req.body; // 구조분해 할당
+
+    if (!name || !email || !phone) {
+      return res.send("필수 값이 입력되지 않았습니다.");
+    }
+
     res.send("Create Concats");
   });
 
@@ -22,4 +29,4 @@ router
     res.send(`Delete Concat for ID : ${req.params.id}`);
   });
 
-module.exports = router
+module.exports = router;
