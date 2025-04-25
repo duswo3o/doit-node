@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 라우트 미들웨어
-app.use("/concats", require("./routes/concatRoutes"));
+app.use("/contcats", require("./routes/contcatRoutes"));
 
 // app 서버 실행
 app.listen(3000, () => {
