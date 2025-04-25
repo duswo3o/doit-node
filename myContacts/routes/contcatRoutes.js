@@ -2,22 +2,19 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getaAllContcats,
+  getAllContcats,
   createContcats,
+  getContcats,
+  updateContcats,
+  deleteContcats,
 } = require("../controllers/contcatControllers");
 
-router.route("/").get(getaAllContcats).post(createContcats);
+router.route("/").get(getAllContcats).post(createContcats);
 
 router
   .route("/:id")
-  .get((req, res) => {
-    res.send(`View Concat for ID : ${req.params.id}`);
-  })
-  .put((req, res) => {
-    res.send(`Update Concat for ID : ${req.params.id}`);
-  })
-  .delete((req, res) => {
-    res.send(`Delete Concat for ID : ${req.params.id}`);
-  });
+  .get(getContcats)
+  .put(updateContcats)
+  .delete(deleteContcats);
 
 module.exports = router;

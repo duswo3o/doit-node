@@ -3,7 +3,7 @@ const asyneHandler = require("express-async-handler");
 // Get all contacts
 // GET /contcats
 
-const getaAllContcats = asyneHandler(async (req, res) => {
+const getAllContcats = asyneHandler(async (req, res) => {
   res.send("Contcats Page");
 });
 
@@ -20,4 +20,28 @@ const createContcats = asyneHandler(async (req, res) => {
   res.send("Create Concats");
 });
 
-module.exports = { getaAllContcats, createContcats };
+// Get contcats
+// GET /contcats/:id
+const getContcats = asyneHandler(async (req, res) => {
+  res.send(`View Concat for ID : ${req.params.id}`);
+});
+
+// Update contcats
+// PUT /contcats/:id
+const updateContcats = asyneHandler(async (req, res) => {
+  res.send(`Update Concat for ID : ${req.params.id}`);
+});
+
+// Delete contcats
+// DELETE /contcats/:id
+const deleteContcats = asyneHandler(async (req, res) => {
+  res.send(`Delete Concat for ID : ${req.params.id}`);
+});
+
+module.exports = {
+  getAllContcats,
+  createContcats,
+  getContcats,
+  updateContcats,
+  deleteContcats,
+};
