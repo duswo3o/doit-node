@@ -2,6 +2,12 @@ const express = require("express");
 const dbConnect = require("./config/dbConnect");
 
 const app = express(); // app 이라는 이름을 가진 서버 생성
+
+app.set("view engine", "ejs"); // 사용할 템플릿 엔진
+app.set("views", "./views"); // 템플릿 파일 저장 경로
+
+app.use(express.static("./public")) // 정적인 파일들의 위치 지정(템플릿 파일에서 사용하는 css, js, 이미지 등)
+
 dbConnect(); // 데이터베이스에 접속
 
 // 라우팅
