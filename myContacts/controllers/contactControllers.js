@@ -5,13 +5,7 @@ const Contact = require("../models/contactModel");
 // GET /contacts
 const getAllContacts = asyneHandler(async (req, res) => {
   const contacts = await Contact.find();
-  // res.send(contacts);
-  // 임의의 변수 생성
-  const users = [
-    { name: "Kim", email: "kim@abc.def", phone: "12345" },
-    { name: "Lee", email: "lee@abc.def", phone: "67890" },
-  ];
-  res.render("getAll", { users: users });
+  res.render("index", { contacts: contacts });
 });
 
 // Create contacts
