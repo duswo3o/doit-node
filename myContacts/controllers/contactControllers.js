@@ -8,8 +8,14 @@ const getAllContacts = asyneHandler(async (req, res) => {
   res.render("index", { contacts: contacts });
 });
 
+// View add Contact form
+// GET /contacts/add
+const addContactForm = (req, res) => {
+  res.render("add");
+};
+
 // Create contacts
-// POST /contacts
+// POST /contacts/add
 const createContacts = asyneHandler(async (req, res) => {
   console.log(req.body);
   const { name, email, phone } = req.body; // 구조분해 할당
@@ -79,4 +85,5 @@ module.exports = {
   getContacts,
   updateContacts,
   deleteContacts,
+  addContactForm,
 };
