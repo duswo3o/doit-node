@@ -37,7 +37,7 @@ const createContacts = asyneHandler(async (req, res) => {
 // GET /contacts/:id
 const getContacts = asyneHandler(async (req, res) => {
   const contact = await Contact.findById(req.params.id);
-  res.send(contact);
+  res.render("update", { contact: contact }); // update.ejs로 contact 값을 넘겨줌
 });
 
 // Update contacts
@@ -60,23 +60,17 @@ const updateContacts = asyneHandler(async (req, res) => {
   // 데이터베이스에 저장
   contact.save();
 
-  // 화면에 결과 표시
-  res.json(contact);
+  res.redirect("/contacts")
 });
 
 // Delete contacts
 // DELETE /contacts/:id
 const deleteContacts = asyneHandler(async (req, res) => {
   const id = req.params.id;
-
-  const contact = await Contact.findById(id); // 요청 본문에 있는 id 값과 같은 연락처 찾기
-  // id 값에 해당하는 contact가 없는 경우
-  if (!contact) {
-    throw new Error("Contact not found");
-  }
-
-  await Contact.deleteOne();
-  res.send("Deleted");
+  // 아이디에 해당하는 정보를 찾아서 삭제
+  await Contact.findByIdAndDelete(id)
+  // 연락처 목록으로 이동
+  res.redirect("/contacts")
 });
 
 module.exports = {
