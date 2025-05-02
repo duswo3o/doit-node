@@ -12,17 +12,13 @@ app.use(methodOverride("_method"));
 
 dbConnect(); // 데이터베이스에 접속
 
-// 라우팅
-app.get("/", (req, res) => {
-  res.send("Hello, Node!");
-});
-
 // 미들웨어 등록
 // 바디파서 미들웨어
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 라우트 미들웨어
+app.use("/", require("./routes/loginRoutes"));
 app.use("/contacts", require("./routes/contactRoutes"));
 
 // app 서버 실행
